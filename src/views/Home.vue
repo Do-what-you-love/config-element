@@ -1,18 +1,49 @@
 <template>
   <div class="home">
     <img alt="Vue logo" src="../assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <cTable :colmuns='col' :data="data">
+        <template v-slot:name="scope">
+            <div>
+                {{scope}}
+            </div>
+        </template>
+    </cTable>
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from '@/components/HelloWorld.vue'
+import cTable from '@/components/cTable.vue'
 
 export default {
   name: 'Home',
   components: {
-    HelloWorld
+    cTable
+  },
+  data () {
+      return {
+          col: [
+              {
+                  prop: 'xx',
+                  label: '用户名'
+              },
+              {
+                  prop: 'xx2',
+                  label: '操作',
+                  slotName: 'name'
+              }
+          ],
+          data: [
+              {
+                  xx: '1111111',
+                  xx2: 2123121
+              },
+              {
+                  xx: '1111111',
+                  xx2: 2123121
+              },
+          ]
+      }
   }
 }
 </script>
