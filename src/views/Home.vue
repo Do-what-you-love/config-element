@@ -1,10 +1,9 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png">
-    <cTable :colmuns='col' :data="data">
-        <template v-slot:name="scope">
+    <cTable :colmuns='col' :data="data" ref="ctable" @cell-click="say">
+        <template v-slot:opration="scope">
             <div>
-                {{scope}}
+                {{scope.row}}
             </div>
         </template>
     </cTable>
@@ -25,25 +24,35 @@ export default {
           col: [
               {
                   prop: 'xx',
-                  label: '用户名'
+                  label: '用户名',
+                  columnAttributes: {}
               },
               {
                   prop: 'xx2',
                   label: '操作',
-                  slotName: 'name'
+                  needSlot: true,
+                  slotName: 'opration'
               }
           ],
           data: [
               {
                   xx: '1111111',
-                  xx2: 2123121
+                  xx2: 222222222
               },
               {
-                  xx: '1111111',
-                  xx2: 2123121
+                  xx: '222222222',
+                  xx2: 333333333
               },
           ]
       }
+  },
+  methods: {
+      say () {
+          this.$log(this.$refs.ctable)
+      },
+      click (arg) {
+        console.log(arg)
+    }
   }
 }
 </script>

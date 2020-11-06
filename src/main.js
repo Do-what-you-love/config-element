@@ -8,6 +8,10 @@ Vue.use(ElementUI);
 
 Vue.config.productionTip = false
 
+Vue.prototype.$log = function $log (...arg) {
+  return console.log(...arg)
+}
+
 new Vue({
   router,
   render: h => h(App)
