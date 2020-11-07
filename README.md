@@ -1,4 +1,4 @@
-# config-ele
+# config-element
 ### 配置化的element-ui
 
 ## Project setup
